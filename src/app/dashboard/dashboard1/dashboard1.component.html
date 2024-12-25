@@ -1,0 +1,218 @@
+<section class="content">
+  <div class="content-block">
+    <div class="block-header">
+      <!-- breadcrumb -->
+      <app-breadcrumb [title]="'Dashboad'" [items]="['Home']" [active_item]="'Dashboad'"></app-breadcrumb>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-xl-3">
+        <app-info-box2 [icon]="'shopping_cart'" [title]="'Total Sales'" [value]="'258'" [trendDirection]="'down'"
+          [trendPercentage]="'10%'" [trendText]="'Decrease'" [colorClass]="'purple'">
+        </app-info-box2>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <app-info-box2 [icon]="'people'" [title]="'Customers'" [value]="'1,287'" [trendDirection]="'up'"
+          [trendPercentage]="'25%'" [trendText]="'Increase'" [colorClass]="'orange'">
+        </app-info-box2>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <app-info-box2 [icon]="'local_activity'" [title]="'New Tickets'" [value]="'128'" [trendDirection]="'down'"
+          [trendPercentage]="'12%'" [trendText]="'Decrease'" [colorClass]="'green'">
+        </app-info-box2>
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <app-info-box2 [icon]="'attach_money'" [title]="'Revenue'" [value]="'$48,697'" [trendDirection]="'up'"
+          [trendPercentage]="'08%'" [trendText]="'Increase'" [colorClass]="'blue'">
+        </app-info-box2>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <mat-card>
+          <mat-card-header class="header-style">
+            <mat-card-title>Earning Chart</mat-card-title>
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="header-dropdown">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>add_circle_outline</mat-icon>
+                <span>Add</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>delete_outline</mat-icon>
+                <span>Delete</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>refresh</mat-icon>
+                <span>Refresh</span>
+              </button>
+            </mat-menu>
+          </mat-card-header>
+          <mat-card-content>
+            <ul class="list-inline text-center m-b-0">
+              <li class="list-inline-item p-r-30">
+                <app-feather-icons [icon]="'arrow-up-circle'" [class]="'col-green'"></app-feather-icons>
+                <h5 class="m-b-0">$675</h5>
+                <p class="text-muted font-14 m-b-0">Weekly Earnings</p>
+              </li>
+              <li class="list-inline-item p-r-30">
+                <app-feather-icons [icon]="'arrow-down-circle'" [class]="'col-orange'">
+                </app-feather-icons>
+                <h5 class="m-b-0">$1,587</h5>
+                <p class="text-muted font-14 m-b-0">Monthly Earnings</p>
+              </li>
+              <li class="list-inline-item p-r-30">
+                <app-feather-icons [icon]="'arrow-up-circle'" [class]="'col-green'"></app-feather-icons>
+                <h5 class="mb-0 m-b-0">$45,965</h5>
+                <p class="text-muted font-14 m-b-0">Yearly Earnings</p>
+              </li>
+            </ul>
+            <apx-chart [series]="earningOptions.series!" [chart]="earningOptions.chart!" [xaxis]="earningOptions.xaxis!"
+              [stroke]="earningOptions.stroke!" [tooltip]="earningOptions.tooltip!"
+              [dataLabels]="earningOptions.dataLabels!" [legend]="earningOptions.legend!"
+              [markers]="earningOptions.markers!" [grid]="earningOptions.grid!" [yaxis]="earningOptions.yaxis!"
+              [title]="earningOptions.title!">
+            </apx-chart>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <mat-card>
+          <mat-card-header class="header-style">
+            <mat-card-title>Transactions</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <ng-scrollbar style="height: 400px" visibility="hover">
+              <app-transactions-widget [transactions]="transactions"></app-transactions-widget>
+            </ng-scrollbar>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <mat-card>
+          <mat-card-header class="header-style">
+            <mat-card-title>Average Daily Bill</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h6>129 Dollar <span class="text-muted font-12">(Average)</span></h6>
+            <apx-chart [series]="performanceRateChartOptions.series!" [chart]="performanceRateChartOptions.chart!"
+              [xaxis]="performanceRateChartOptions.xaxis!" [stroke]="performanceRateChartOptions.stroke!"
+              [colors]="performanceRateChartOptions.colors!" [dataLabels]="performanceRateChartOptions.dataLabels!"
+              [legend]="performanceRateChartOptions.legend!" [markers]="performanceRateChartOptions.markers!"
+              [grid]="performanceRateChartOptions.grid!" [yaxis]="performanceRateChartOptions.yaxis!"
+              [tooltip]="performanceRateChartOptions.tooltip!" [title]="performanceRateChartOptions.title!">
+            </apx-chart>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <mat-card>
+          <mat-card-header class="header-style">
+            <mat-card-title>Invoices</mat-card-title>
+            <a mat-button color="primary" href="#" (click)="$event.preventDefault();">View All</a>
+          </mat-card-header>
+          <mat-card-content>
+            <ng-scrollbar style="height: 400px" visibility="hover">
+              <app-table-card [dataSource]="invoiceData"
+                [columnDefinitions]="invoiceColumnDefinitions"></app-table-card>
+            </ng-scrollbar>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <mat-card>
+          <mat-card-header class="header-style">
+            <mat-card-title>Project Status</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <ng-scrollbar style="height: 400px" visibility="hover">
+              <app-project-status [projects]="projects"></app-project-status>
+            </ng-scrollbar>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <mat-card>
+          <mat-card-header class="header-style">
+            <mat-card-title>Todo List</mat-card-title>
+            <a mat-button color="primary" href="#" (click)="$event.preventDefault();">View All</a>
+          </mat-card-header>
+          <mat-card-content>
+            <ng-scrollbar style="height: 400px" visibility="hover">
+              <app-todo-widget [todos]="tasks" (todoToggled)="onTodoToggled($event)"
+                (todosUpdated)="onTodosUpdated($event)">
+              </app-todo-widget>
+            </ng-scrollbar>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <mat-card>
+          <mat-card-header class="header-style">
+            <mat-card-title>Documents</mat-card-title>
+            <a mat-button color="primary" href="#" (click)="$event.preventDefault();">View All</a>
+          </mat-card-header>
+          <mat-card-content>
+            <ng-scrollbar style="height: 400px" visibility="hover">
+              <div class="doc-file-type">
+                <app-document-list [documents]="documentList"></app-document-list>
+              </div>
+            </ng-scrollbar>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <mat-card>
+          <mat-card-header class="header-style">
+            <mat-card-title>Clients Survay</mat-card-title>
+            <a mat-button color="primary" href="#" (click)="$event.preventDefault();">View All</a>
+          </mat-card-header>
+          <mat-card-content>
+            <apx-chart [series]="areaChartOptions.series!" [chart]="areaChartOptions.chart!"
+              [xaxis]="areaChartOptions.xaxis!" [yaxis]="areaChartOptions.yaxis!" [colors]="areaChartOptions.colors!"
+              [stroke]="areaChartOptions.stroke!" [legend]="areaChartOptions.legend!" [grid]="areaChartOptions.grid!"
+              [tooltip]="areaChartOptions.tooltip!" [dataLabels]="areaChartOptions.dataLabels!"></apx-chart>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <mat-card>
+          <mat-card-header class="header-style">
+            <mat-card-title>Support Tickets Survay</mat-card-title>
+            <a mat-button color="primary" href="#" (click)="$event.preventDefault();">View All</a>
+          </mat-card-header>
+          <mat-card-content>
+            <apx-chart [series]="barChartOptions.series!" [chart]="barChartOptions.chart!"
+              [dataLabels]="barChartOptions.dataLabels!" [plotOptions]="barChartOptions.plotOptions!"
+              [responsive]="barChartOptions.responsive!" [xaxis]="barChartOptions.xaxis!" [grid]="barChartOptions.grid!"
+              [tooltip]="barChartOptions.tooltip!" [legend]="barChartOptions.legend!" [fill]="barChartOptions.fill!">
+            </apx-chart>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <mat-card>
+          <mat-card-header class="header-style">
+            <mat-card-title>Projects Details</mat-card-title>
+            <a mat-button color="primary" href="#" (click)="$event.preventDefault();">View All</a>
+          </mat-card-header>
+          <mat-card-content>
+            <ng-scrollbar style="height: 400px" visibility="hover">
+              <app-table-card [dataSource]="projectData"
+                [columnDefinitions]="projectColumnDefinitions"></app-table-card>
+            </ng-scrollbar>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>

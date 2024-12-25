@@ -1,0 +1,58 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="avatarDetails">
+      <div class="modalTitle">
+        {{'Add Spending'}}
+      </div>
+    </div>
+    <button mat-icon-button mat-dialog-close class="modal-close-button" aria-label="Close dialog" type="button">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="spendingForm" (ngSubmit)="addSpending()">
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-lg-6">
+          <mat-form-field appearance="outline" class="mat-form-field">
+            <mat-label>Select Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="spending_date" placeholder="DD-MM-YYYY">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-sm-12 col-lg-6">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label for="spending_amount">Spending Amount</mat-label>
+            <input type="number" matInput class="form-control p-l-10" id="spending_amount"
+              formControlName="spending_amount">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-lg-6">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Spending Category</mat-label>
+            <mat-select formControlName="spending_category">
+              @for ( category of spendingCategories; track $index) {
+                <mat-option  [value]="category">
+                {{ category }}
+              </mat-option>
+              }
+              
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6 col-sm-12 col-lg-6">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label for="spending_description">Spending Description</mat-label>
+            <input matInput class="form-control p-l-10" id="spending_description"
+              formControlName="spending_description">
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+      <button type="submit" class="vivid-pink" [disabled]="spendingForm.invalid" mat-flat-button color="secondary">
+       {{ action === 'add' ? 'Add' : 'Update'}}</button>
+    </form>
+  </div>
+</div>

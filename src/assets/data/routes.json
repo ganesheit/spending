@@ -1,0 +1,16 @@
+{
+  "routes": [
+    {
+      "path": "report",
+      "title": "MENUITEMS.REOPORT.TEXT",
+      "iconType": "feather",
+      "icon": "check-circle",
+      "class": "",
+      "groupTitle": false,
+      "badge": "",
+      "badgeClass": "",
+      "submenu": []
+    }
+  ]
+}
+

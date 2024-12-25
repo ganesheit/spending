@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.datepicker-overrides((
+    calendar-date-selected-state-text-color: orange,
+    calendar-date-selected-state-background-color: red,
+  ));
+}
+.p-l-10 {
+    padding-left: 10px;
+}
+
+.mat-form-field {
+    width: 100%; /* Ensures full width inside column */
+  }
+
+  .vivid-pink {
+    background-image: linear-gradient(45deg, oklch(59.02% .277 332.77), oklch(59.02% .277 27.0));
+}
